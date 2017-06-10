@@ -51,6 +51,9 @@ public class AirlineService {
 	}
 
 	public List<Airline> findAll() {
+		System.out.println("------------------------------");
+		airlineDao.findAll();
+		System.out.println("------------------------------");
 		return airlineDao.findAll();
 	}
 }

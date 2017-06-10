@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -18,6 +19,8 @@ import cs545.airline.service.AirportService;
 
 @Named
 @Path("airport")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class AirportWebService {
 	
 	@Inject
@@ -25,77 +28,66 @@ public class AirportWebService {
 	
 	@POST
 	@Path("/new")
-	@Produces({MediaType.APPLICATION_JSON})
 	public void create(Airport airport) {
 		airportService.create(airport);
 	}
 	
 	@DELETE
 	@Path("/delete")
-	@Produces({MediaType.APPLICATION_JSON})
 	public void delete(Airport airport) {
 		airportService.delete(airport);
 	}
 	
 	@PUT
 	@Path("/update")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airport update(Airport airport) {
 		return airportService.update(airport);
 	}
 		
 	@GET
 	@Path("/find")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airport find(Airport airport) {
 		return airportService.find(airport);
 	}
 	
 	@GET
 	@Path("/findbycode")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airport findByCode(String airportcode) {
 		return airportService.findByCode(airportcode);
 	}
 	
 	@GET
 	@Path("/findbyarrival")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findByArrival(Flight flight) {
 		return airportService.findByArrival(flight);
 	}
 	
 	@GET
 	@Path("/findbydeparture")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findByDeparture(Flight flight) {
 		return airportService.findByDeparture(flight);
 	}
 
 	@GET
 	@Path("/findbycity")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findByCity(String city) {
 		return airportService.findByCity(city);
 	}
 	
 	@GET
 	@Path("/findbycountry")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findByCountry(String country) {
 		return airportService.findByCountry(country);
 	}
 	
 	@GET
 	@Path("/findbyname")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findByName(String name) {
 		return airportService.findByName(name);
 	}
 
 	@GET
 	@Path("/findall")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airport> findAll() {
 		return airportService.findAll();
 	}

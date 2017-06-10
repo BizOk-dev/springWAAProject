@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -19,6 +20,8 @@ import cs545.airline.service.AirplaneService;
 
 @Named
 @Path("airplane")
+@Consumes({MediaType.APPLICATION_JSON})
+@Produces({MediaType.APPLICATION_JSON})
 public class AirplaneWebService {
 	
 	@Inject
@@ -26,56 +29,48 @@ public class AirplaneWebService {
 	
 	@POST
 	@Path("/new")
-	@Produces({MediaType.APPLICATION_JSON})
 	public void create(Airplane airplane) {
 		airplaneService.create(airplane);
 	}
 	
 	@DELETE
 	@Path("/delete")
-	@Produces({MediaType.APPLICATION_JSON})
 	public void delete(Airplane airplane) {
 		airplaneService.delete(airplane);
 	}
 	
 	@PUT
 	@Path("/update")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airplane update(Airplane airplane) {
 		return airplaneService.update(airplane);
 	}
 	
 	@GET
 	@Path("/find")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airplane find(Airplane airplane) {
 		return airplaneService.find(airplane);
 	}
 
 	@GET
 	@Path("/findbySrlnr")
-	@Produces({MediaType.APPLICATION_JSON})
 	public Airplane findBySrlnr(String serialno) {
 		return airplaneService.findBySrlnr(serialno);
 	}
 	
 	@GET
 	@Path("/findbyflight")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airplane> findByFlight(Flight flight) {
 		return airplaneService.findByFlight(flight);
 	}
 	
 	@GET
 	@Path("findByModel")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airplane> findByModel(String model) {
 		return airplaneService.findByModel(model);
 	}
 	
 	@GET
 	@Path("findall")
-	@Produces({MediaType.APPLICATION_JSON})
 	public List<Airplane> findAll() {
 		return airplaneService.findAll();
 	}
