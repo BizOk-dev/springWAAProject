@@ -25,6 +25,14 @@
 		<f:ajax listener="#{searchService.findbyDestination}" execute="@this" render="list"></f:ajax>
 		</h:inputText>
 		
+		<h:outputLabel value="Search By Departure Time:"/>
+		<h:inputText id="search3" value="#{searchService.searchbyDate}" 
+		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
+		converterMessage="Please provide date of birth in dd/mm/yyyy format">
+	    <f:convertDateTime pattern="dd/mm/yyyy" /> 
+		<f:ajax listener="#{searchService.findFlightbyDeparture}" execute="@this" render="@this list"></f:ajax>
+		</h:inputText> 
+		
 	
 		<h:dataTable id="list" var="p" value="#{searchService.flights}"
 			border="1">

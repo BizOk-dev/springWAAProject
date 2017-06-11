@@ -32,22 +32,8 @@ public class SearchService implements Serializable{
 	private String searchString="";
 	private String searchStringDeparture="";
 	private String searchStringDestination="";
-	public String getSearchStringDeparture() {
-		return searchStringDeparture;
-	}
-
-	public void setSearchStringDeparture(String searchStringDeparture) {
-		this.searchStringDeparture = searchStringDeparture;
-	}
-
-	public String getSearchStringDestination() {
-		return searchStringDestination;
-	}
-
-	public void setSearchStringDestination(String searchStringDestination) {
-		this.searchStringDestination = searchStringDestination;
-	}
-
+	private String searchbyDate1="";
+	
 	private Date searchbyDate=null;
 	private List<Flight> flights;
 	
@@ -76,7 +62,16 @@ public class SearchService implements Serializable{
 		}
 	}
 	
-
+	public void findbyDestination(AjaxBehaviorEvent event){
+		System.out.println(searchStringDestination);
+		if(searchStringDestination.isEmpty()){
+			flights=flightService.findAll();
+		}
+		else{
+			airport=airportService.findByName(searchStringDestination);
+			flights=flightService.findByDestination(airport.get(0));
+		}
+}
 	public Date getSearchbyDate() {
 		return searchbyDate;
 	}
@@ -96,25 +91,22 @@ public class SearchService implements Serializable{
 	public List<Flight> getFlights() {
 		return flights;
 	}
-	public Airline getAirline() {
-		return airline;
+	public String getSearchStringDeparture() {
+		return searchStringDeparture;
 	}
 
-	public void setAirline(Airline airline) {
-		System.out.println("hello bizen2");
-		this.airline = airline;
-		System.out.println("hello bizen1");
-}
+	public void setSearchStringDeparture(String searchStringDeparture) {
+		this.searchStringDeparture = searchStringDeparture;
+	}
+
+	public String getSearchStringDestination() {
+		return searchStringDestination;
+	}
+
+	public void setSearchStringDestination(String searchStringDestination) {
+		this.searchStringDestination = searchStringDestination;
+	}
 	
 	
-public void findbyDestination(AjaxBehaviorEvent event){
-		System.out.println(searchStringDestination);
-		if(searchStringDestination.isEmpty()){
-			flights=flightService.findAll();
-		}
-		else{
-			airport=airportService.findByName(searchStringDestination);
-			flights=flightService.findByDestination(airport.get(0));
-		}
-}
+
 }
