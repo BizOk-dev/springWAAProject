@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+	<title>Flights</title>
+</h:head>
+<h:body>
+
+		<h:form>
+
+			<h:dataTable var="p" value="#{airlineService.findAll()}">
+				<h:column>
+					<f:facet name="header">Flight id</f:facet>
+					<h:outputText value="#{p.id}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">Flightnr</f:facet>
+					<h:outputText value="#{p.name}" />
+					<!-- <h:inputText value="#{p.quantity}" maxlength="2"
+						rendered="#{p.editable}">
+						<f:convertNumber integerOnly=" true" />
+						<f:validateLongRange minimum="1" maximum="50" />
+					</h:inputText>
+				</h:column>
+				<h:column>
+					<f:facet name="header">Action</f:facet>
+					<h:panelGrid columns="2">
+
+						<h:commandButton value="#{p.editable?'Save':'Edit'}"
+							action="#{pizzaOrderHelper.changeEditStatus(p)}" />
+
+						<h:commandButton value="Remove"
+							action="#{pizzaOrderHelper.deletePizza(order, p)}" />
+
+					</h:panelGrid> -->
+				</h:column>
+
+				<!-- <f:facet name="footer">
+					<h:commandButton value="Add Pizza"
+						action="#{pizzaOrderHelper.addPizza(order)}" />
+				</f:facet> -->
+			</h:dataTable>
+		</h:form>
+	</ui:composition>
+
+</h:body>
+</html>
