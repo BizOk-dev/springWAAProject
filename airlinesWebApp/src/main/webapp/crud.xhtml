@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>Test</title>
+</h:head>
+<h:body>
+<h:form>
+	<h:outputLabel value="Add Airline"/>		
+	<h:inputText id="name" value="#{crudService.searchString}"/>
+	<h:commandButton value="Add" action="#{crudService.add}"></h:commandButton>
+	<br/>
+	<h:outputLabel value="Delete Airline"/>		
+	<h:inputText id="name1" value="#{crudService.searchString1}"/>
+	<h:commandButton value="Delete">
+	<f:ajax listener="#{crudService.delete}" execute="@this" render="list"></f:ajax></h:commandButton>
+	
+	<h:dataTable id="list" var="p" value="#{crudService.airlinelist}" border="1">
+			<h:column>
+				<f:facet name="header">Airline Id:</f:facet>
+				#{p.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Airline:</f:facet>
+				#{p.name}
+			</h:column>
+						
+		</h:dataTable>
+</h:form>
+</h:body>
+</html>

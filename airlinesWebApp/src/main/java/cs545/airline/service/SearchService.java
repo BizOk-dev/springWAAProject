@@ -42,36 +42,7 @@ public class SearchService implements Serializable{
 		flights=flightService.findAll();
 	}
 	
-	public void findFlightbyAirline(AjaxBehaviorEvent event){
-		
-		if(searchString.isEmpty()){
-			flights=flightService.findAll();
-		}
-		else{
-			airline=airlineService.findByName(searchString);
-			flights=flightService.findByAirline(airline);
-		}
-	}
-	public void findFlightbyDeparture(AjaxBehaviorEvent event){
-		
-		if(searchbyDate.equals(null)){
-			flights=flightService.findAll();
-		}
-		else{
-			flights=flightService.findByDeparture(searchbyDate);
-		}
-	}
 	
-	public void findbyDestination(AjaxBehaviorEvent event){
-		System.out.println(searchStringDestination);
-		if(searchStringDestination.isEmpty()){
-			flights=flightService.findAll();
-		}
-		else{
-			airport=airportService.findByName(searchStringDestination);
-			flights=flightService.findByDestination(airport.get(0));
-		}
-}
 	public Date getSearchbyDate() {
 		return searchbyDate;
 	}
@@ -107,6 +78,35 @@ public class SearchService implements Serializable{
 		this.searchStringDestination = searchStringDestination;
 	}
 	
+	public void findFlightbyAirline(AjaxBehaviorEvent event){
+		
+		if(searchString.isEmpty()){
+			flights=flightService.findAll();
+		}
+		else{
+			airline=airlineService.findByName(searchString);
+			flights=flightService.findByAirline(airline);
+		}
+	}
+	public void findFlightbyDeparture(AjaxBehaviorEvent event){
+		
+		if(searchbyDate.equals(null)){
+			flights=flightService.findAll();
+		}
+		else{
+			flights=flightService.findByDeparture(searchbyDate);
+		}
+	}
 	
+	public void findbyDestination(AjaxBehaviorEvent event){
+		System.out.println(searchStringDestination);
+		if(searchStringDestination.isEmpty()){
+			flights=flightService.findAll();
+		}
+		else{
+			airport=airportService.findByName(searchStringDestination);
+			flights=flightService.findByDestination(airport.get(0));
+		}
+}
 
 }
