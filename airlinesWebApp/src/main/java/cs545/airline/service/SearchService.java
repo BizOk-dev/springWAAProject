@@ -30,7 +30,7 @@ public class SearchService implements Serializable{
 	private Airport airport;
 	private Airline airline;
 	private String searchString="";
-	private Date searchbyDate;
+	private Date searchbyDate=null;
 	private List<Flight> flights;
 	
 	@PostConstruct
