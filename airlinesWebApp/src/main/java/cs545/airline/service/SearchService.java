@@ -27,9 +27,27 @@ public class SearchService implements Serializable{
 	@Inject
 	private AirportService airportService;
 	
-	private Airport airport;
+	private List<Airport> airport;
 	private Airline airline;
 	private String searchString="";
+	private String searchStringDeparture="";
+	private String searchStringDestination="";
+	public String getSearchStringDeparture() {
+		return searchStringDeparture;
+	}
+
+	public void setSearchStringDeparture(String searchStringDeparture) {
+		this.searchStringDeparture = searchStringDeparture;
+	}
+
+	public String getSearchStringDestination() {
+		return searchStringDestination;
+	}
+
+	public void setSearchStringDestination(String searchStringDestination) {
+		this.searchStringDestination = searchStringDestination;
+	}
+
 	private Date searchbyDate=null;
 	private List<Flight> flights;
 	
@@ -57,6 +75,8 @@ public class SearchService implements Serializable{
 			flights=flightService.findByDeparture(searchbyDate);
 		}
 	}
+	
+
 	public Date getSearchbyDate() {
 		return searchbyDate;
 	}
@@ -84,5 +104,17 @@ public class SearchService implements Serializable{
 		System.out.println("hello bizen2");
 		this.airline = airline;
 		System.out.println("hello bizen1");
-	}
+}
+	
+	
+public void findbyDestination(AjaxBehaviorEvent event){
+		System.out.println(searchStringDestination);
+		if(searchStringDestination.isEmpty()){
+			flights=flightService.findAll();
+		}
+		else{
+			airport=airportService.findByName(searchStringDestination);
+			flights=flightService.findByDestination(airport.get(0));
+		}
+}
 }

@@ -18,13 +18,14 @@
 		<f:ajax listener="#{searchService.findFlightbyAirline}" execute="@this" render="list"></f:ajax>
 		</h:inputText>
 		
-		
-		<h:outputLabel value="Search By Departure Time:"/>
-		<h:inputText id="search2" value="#{searchService.searchbyDate}" converter="converterDate"
+		<h:outputLabel value="Search By Destination:"/>
+		<h:inputText id="search2" value="#{searchService.searchStringDestination}"
 		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
 	    >
-		<f:ajax listener="#{searchService.findFlightbyDeparture}" execute="@this" render="list"></f:ajax>
+		<f:ajax listener="#{searchService.findbyDestination}" execute="@this" render="list"></f:ajax>
 		</h:inputText>
+		
+	
 		<h:dataTable id="list" var="p" value="#{searchService.flights}"
 			border="1">
 			<h:column>
