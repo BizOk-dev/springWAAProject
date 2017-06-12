@@ -23,37 +23,30 @@ public class CrudService implements Serializable{
 	private List<Airline> airlinelist;
 	private String searchString="";
 	private String searchString1="";
+	private String searchforUpdate="";
+	private String setforUpdate="";
 	private Airline airline;
-	public String getSearchString1() {
-		return searchString1;
-	}
 
-	public void setSearchString1(String searchString1) {
-		this.searchString1 = searchString1;
-	}
+	
 
 	@PostConstruct
 	public void initContactFlightBean(){
 		airlinelist=airlineService.findAll();
 	}
 
-	/*public void findAirlines(AjaxBehaviorEvent event){
-		if(searchString.isEmpty()){
-			airlinelist=airlineService.findAll();
-		}
-		
-		else{
-			//airlinelist=airlineService.findByName(searchString);
-		}
-	}*/
-	
-	public void add(){
+	public void add(AjaxBehaviorEvent event){
 		airlineService.create(new Airline(searchString));
 	}
 	
-	public void delete(){
+	public void delete(AjaxBehaviorEvent event){
 		airline=airlineService.findByName(searchString1);
 		airlineService.delete(airline);
+	}
+	
+	public void update(AjaxBehaviorEvent event){
+		airline=airlineService.findByName(searchforUpdate);
+		airline.setName(setforUpdate);
+		airlineService.update(airline);
 	}
 	public List<Airline> getAirlinelist() {
 		return airlinelist;
@@ -69,5 +62,27 @@ public class CrudService implements Serializable{
 	public void setSearchString(String searchString) {
 		this.searchString = searchString;
 	}
+	public String getSearchforUpdate() {
+		return searchforUpdate;
+	}
+
+	public void setSearchforUpdate(String searchforUpdate) {
+		this.searchforUpdate = searchforUpdate;
+	}
 	
+	public String getSetforUpdate() {
+		return setforUpdate;
+	}
+
+	public void setSetforUpdate(String setforUpdate) {
+		this.setforUpdate = setforUpdate;
+	}
+
+	public String getSearchString1() {
+		return searchString1;
+	}
+
+	public void setSearchString1(String searchString1) {
+		this.searchString1 = searchString1;
+	}
 }
