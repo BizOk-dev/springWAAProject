@@ -8,6 +8,7 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.event.AjaxBehaviorEvent;
+import javax.faces.flow.FlowScoped;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -19,7 +20,7 @@ import cs545.airline.model.Airport;
 import cs545.airline.model.Flight;
 
 @Named
-@ViewScoped
+@FlowScoped("faces")
 public class SearchService implements Serializable{
 
 	private static final long serialVersionUID = 1L;
