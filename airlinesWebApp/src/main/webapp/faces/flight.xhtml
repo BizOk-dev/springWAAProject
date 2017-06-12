@@ -29,8 +29,9 @@
 		<h:outputLabel value="Search By Departure Time:"/>
 		<h:inputText id="search3" value="#{searchService.searchbyDate}" 
 		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
-		converterMessage="Please provide date of birth in dd/mm/yyyy format">
-	    <f:convertDateTime pattern="dd/mm/yyyy" /> 
+		converterMessage="Please provide date of birth in mm/dd//yyyy format">
+	   
+	    <h:message for="search3" style="color:red" />
 		<f:ajax listener="#{searchService.findFlightbyDeparture}" execute="@this" render="@this list"></f:ajax>
 		</h:inputText> 
 		

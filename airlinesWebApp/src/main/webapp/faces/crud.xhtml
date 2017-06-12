@@ -19,16 +19,16 @@
 	<h:outputLabel value="Delete Airline"/>		
 	<h:inputText id="name1" value="#{crudService.searchString1}"/>
 	<h:commandButton value="Delete">
-	<f:ajax listener="#{crudService.delete}" execute="@this" render="list"/>
+	<f:ajax listener="#{crudService.delete}" execute="@form" render="list"/>
 	</h:commandButton><br/>
 	
 	<h:outputLabel value="Update Airline"/>	<br/>
 	<h:outputLabel value="Select Airplan"/>
 	<h:inputText id="name2" value="#{crudService.searchforUpdate}"/><br/>
-	<h:outputLabel value="New Airplan name"/>
+	<h:outputLabel value="New Airplane name"/>
 	<h:inputText id="name3" value="#{crudService.setforUpdate}"/>
 	<h:commandButton value="Update">
-	<f:ajax listener="#{crudService.update}" execute="@this" render="list"/>
+	<f:ajax listener="#{crudService.update}" execute="@form" render="list"/>
 	</h:commandButton>
 	<h:dataTable id="list" var="p" value="#{crudService.airlinelist}" border="1">
 			<h:column>
