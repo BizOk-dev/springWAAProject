@@ -10,7 +10,8 @@
 </h:head>
 <h:body>
 	<h:form>
-
+		<h:commandLink action="home" >home</h:commandLink><br/>
+		<h:commandLink action="next" >Airline Records</h:commandLink><br/>
 		<h:outputLabel value="Search By Airline:"/>
 		<h:inputText id="search1" value="#{searchService.searchString}"
 		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"

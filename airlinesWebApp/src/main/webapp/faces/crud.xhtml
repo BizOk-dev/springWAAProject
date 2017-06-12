@@ -13,7 +13,7 @@
 	<h:outputLabel value="Add Airline"/>		
 	<h:inputText id="name" value="#{crudService.searchString}"/>
 	<h:commandButton value="Add">
-	<f:ajax listener="#{crudService.add}" execute="@this" render="list"/>
+	<f:ajax listener="#{crudService.add}" execute="@form" render="list"/>
 	</h:commandButton>
 	<br/>
 	<h:outputLabel value="Delete Airline"/>		
@@ -41,6 +41,8 @@
 			</h:column>
 						
 		</h:dataTable>
+		<h:commandLink action="home" >home</h:commandLink><br/>
+		<h:commandLink action="back" >Back</h:commandLink>
 </h:form>
 </h:body>
 </html>
