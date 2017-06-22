@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Add Order</title>
+</head>
+<body>
+<h1>Add Order</h1>
+	<div class="container">
+	<div class="row">
+	<div class="span8">
+	
+	Create order
+	<form action="/home" method="GET">
+		<input type="submit" value="Back" />
+	</form>
+	<form th:action="@{/newOrder}" th:Object="${person}" method="POST">
+	
+		<select class="form-control" name="personId" required="required">
+		  		<option value="" th:text="@{Select}" ></option>
+    			<option th:each="person : ${persons}" th:value="${person.id}" th:text="${person.firstName}"></option>
+		  	</select><input type="submit" value="Add Order" />
+	</form>
+		
+	</div>
+	</div>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+		<!--<select name="personId">
+			 <c:forEach items="${personList}" var="person"> 
+				<option th:each="person: ${personList} " th:value="${person.id}" th:text="${person.firstName}">${person.firstName}</option>
+			 </c:forEach> 
+		</select> <input type="submit" value="Add product" />-->

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Edit Person</h1>
+	<div class="container">
+	<div class="row">
+	<div class="span8">
+	<form th:action="@{/person/update}" th:Object="${personedit}" method="put">
+		<input type="hidden" th:field="*{id}" />
+		<label for="firstName">First-Name</label>
+		<input type="text" th:field="*{firstName}"/><br/>
+		<label for="lastName">Last-Name</label>
+		<input type="text" th:field="*{lastName}"/><br/>
+		<label for="email">Email</label>
+		<input type="email" th:field="*{email}"/><br/>
+		<label for="phone">Phone</label>
+		<input type="number" th:field="*{phone}"/><br/>
+		<label for="enable">Enable</label>
+		<input type="checkbox" th:field="*{enable}"/><br/>
+		<label for="address.city">City</label>
+		<input type="text" th:field="*{address.city}"/><br/>
+		<label for="address.state">State</label>
+		<input type="text" th:field="*{address.state}"/><br/>
+		<label for="address.country">Country</label>
+		<input type="text" th:field="*{address.country}"/><br/>
+		<label for="address.zipcode">Zipcode</label>
+		<input type="text" th:field="*{address.zipcode}"/><br/>
+		<input type="submit" value="Add-Person" />
+	</form>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

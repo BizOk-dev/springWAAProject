@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Add Order Line</title>
+</head>
+<body>
+<h1>Add Order Line</h1>
+	<div class="container">
+	<div class="row">
+	<div class="span8">
+	<form th:action="@{/addOrder}" th:Object="${order}" method="post">
+		<label for="orderDate">Order Date</label>
+		<input type="date" th:field="*{orderDate}"/><br/>
+		<!-- <label for="orderLines.quantity">Order Quantity</label>
+		<input type="number" th:field="*{orderLines.quantity}"/><br/>
+		<label for="orderLines.quantity">Order Quantity</label>
+		<input type="number" th:field="*{orderLines.quantity}"/><br/>
+		 --><input type="submit" value="Add-Order" />	
+	</form>
+	</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Insert title here</title>
+</head>
+<body>
+<table>
+<tr>
+<th>Id</th>
+<th>quantity</th>
+<th>OrderName</th>
+</tr>
+<tr th:each="orderline : ${orderlinedetail}" th:object="${orderline}">
+<td th:text="${orderline.id}"></td>
+<td th:text="${orderline.quantity}"></td>
+<td th:text="${orderline.product.productName}"></td>
+</tr>
+</table>
+</body>
+</html>

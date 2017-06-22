@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8"/>
+<title>Add OrderLine</title>
+</head>
+<body>
+<h1>Add Order</h1>
+	<div class="container">
+	<div class="row">
+	<div class="span8">
+	
+	Create order
+	<form action="/home" method="GET">
+		<input type="submit" value="Back" />
+	</form>
+	<form th:action="@{/newOrderLine}" th:Object="${product}" method="POST">
+	
+		<select class="form-control" name="productId" required="required">
+		  		<option value="" th:text="@{Select}" ></option>
+    			<option th:each="product : ${productList}" th:value="${product.id}" th:text="${product.productName}"></option>
+		 </select>
+		 <!-- <input type="number" name="quantity"/><br/> -->
+		 <input type="submit" value="Add product" />
+	</form>
+		
+	</div>
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,26 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+rel="stylesheet" media="screen"/>
+<script src="http://cdn.jsdeliver.net/webjars/jquery/2.1.4/jquery.min.js"
+th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+<title>My Project</title>
+</head>
+<body>
+	<p>You can choose any presentation framework that could be integrated with
+	Spring
+	</p>
+	<p>
+		The only user is "<b>super</b>" and the password is "<b>pw</b>"
+	</p>
+	<ul>
+		<li><a th:href="@{/product}"> Go to Product List </a></li>
+		<li><a th:href="@{/personlist}">Add Person </a></li>
+		<li><a th:href="@{/orderlist}">Order List </a></li>
+	</ul>
+</body>
+</html>

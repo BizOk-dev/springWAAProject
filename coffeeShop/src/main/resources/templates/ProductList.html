@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.4/css/bootstrap.min.css"
+th:href="@{/webjars/bootstrap/3.3.5/css/bootstrap.min.css}"
+rel="stylesheet" media="screen"/>
+<script src="http://cdn.jsdeliver.net/webjars/jquery/2.1.4/jquery.min.js"
+th:src="@{/webjars/jquery/2.1.4/jquery.min.js}"></script>
+</head>
+<body>
+<h1>List of Products</h1>
+	<table class="table table-striped">
+	<thead>
+	<tr>
+		<th>Id</th>
+		<th>Product Name</th>
+		<th>Description</th>
+		<th>Price</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr th:each="product : ${displayProduct}" th:object="${product}">
+	<td th:text="*{id}"></td>
+	<td th:text="*{productName}"></td>
+	<td th:text="*{description}"></td>
+	<td th:text="*{price}"></td>
+	<td> <a href="#" th:href="@{/product/view(id=*{id})}">View</a></td>
+	<td> <a href="#" th:href="@{/product/delete(id=*{id})}">Remove</a></td>
+	
+	</tr>
+	</tbody>
+	</table>
+<ul>
+<li><a href="/addProduct">Add new Produt</a></li>
+</ul>
+</body>
+</html>
