@@ -13,21 +13,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception{
 		httpSecurity.authorizeRequests()
-		.antMatchers("/","/resources/static/**","/assets/**", "/home", "/index","/product","/resources/**", "/registration","/login","/api/**")
+		.antMatchers("/","/Order","/Person","/Product","/resources/static/**","/assets/**", "/home", "/index","/product","/resources/**", "/registration","/login","/api/**")
 		.permitAll()
 		.anyRequest()
-		//for mvc
-		/*.fullyAuthenticated()
+		.fullyAuthenticated()
 		.and().formLogin()
 		.permitAll()
 		.and()
 		.logout()
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
     	.logoutSuccessUrl("/")
-        .permitAll();*/
-		//for rest
-		.permitAll();
-		httpSecurity.csrf().disable();
+        .permitAll();
+		
+		//.permitAll();
+		//httpSecurity.csrf().disable();
 	}
 	
 	@Override
