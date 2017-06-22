@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.2" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+              http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+	<flow-definition id="faces">
+	<start-node>flight</start-node>
+	<view id="flight">
+			<vdl-document>/faces/flight.xhtml</vdl-document>
+	</view>
+	
+	<flow-return id="exit">
+			<from-outcome>/index.xhtml</from-outcome>
+	</flow-return>
+		
+	<navigation-rule>
+			<from-view-id>/faces/flight.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>next</from-outcome>
+				<to-view-id>/faces/crud.xhtml</to-view-id>
+			</navigation-case>
+			<navigation-case>
+				<from-outcome>home</from-outcome>
+				<to-view-id>exit</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	<navigation-rule>
+			<from-view-id>/faces/crud.xhtml</from-view-id>
+			<navigation-case>
+				<from-outcome>back</from-outcome>
+				<to-view-id>/faces/flight.xhtml</to-view-id>
+			</navigation-case>
+			<navigation-case>
+				<from-outcome>home</from-outcome>
+				<to-view-id>exit</to-view-id>
+			</navigation-case>
+	</navigation-rule>
+	</flow-definition>
+	</faces-config>
+
+		

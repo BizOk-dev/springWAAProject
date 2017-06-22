@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<h:head>
+	<title>Test</title>
+</h:head>
+<h:body>
+	<h:form>
+		<h:commandLink action="home" >home</h:commandLink><br/>
+		<h:commandLink action="next" >Airline Records</h:commandLink><br/>
+		<h:outputLabel value="Search By Airline:"/>
+		<h:inputText id="search1" value="#{searchService.searchString}"
+		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
+	    >
+		<f:ajax listener="#{searchService.findFlightbyAirline}" execute="@this" render="list"></f:ajax>
+		</h:inputText>
+		
+		<h:outputLabel value="Search By Destination:"/>
+		<h:inputText id="search2" value="#{searchService.searchStringDestination}"
+		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
+	    >
+		<f:ajax listener="#{searchService.findbyDestination}" execute="@this" render="list"></f:ajax>
+		</h:inputText>
+		
+		<h:outputLabel value="Search By Departure Time:"/>
+		<h:inputText id="search3" value="#{searchService.searchbyDate}" 
+		onkeypress="if (event.keyCode == 13) {event.target.blur();event.stopPropagation();return false;} else {return true;};"
+		converterMessage="Please provide date of birth in mm/dd//yyyy format">
+	   
+	    <h:message for="search3" style="color:red" />
+		<f:ajax listener="#{searchService.findFlightbyDeparture}" execute="@this" render="@this list"></f:ajax>
+		</h:inputText> 
+		
+	
+		<h:dataTable id="list" var="p" value="#{searchService.flights}"
+			border="1">
+			<h:column>
+				<f:facet name="header">Flight Id:</f:facet>
+				#{p.id}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Flight Nr:</f:facet>
+				#{p.flightnr}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Departure Date:</f:facet>
+				#{p.departureDate}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Departure Time:</f:facet>
+				#{p.departureTime}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Arrival Date:</f:facet>
+				#{p.arrivalDate}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Arrival Time:</f:facet>
+				
+				#{p.arrivalTime}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Airlines:</f:facet>
+				#{p.airline.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Origin:</f:facet>
+				#{p.origin.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Destination:</f:facet>
+				#{p.destination.name}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Airportcode:</f:facet>
+				#{p.destination.airportcode}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Airplane:</f:facet>
+				#{p.airplane.model}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Capacity:</f:facet>
+				#{p.airplane.capacity}
+			</h:column>
+		</h:dataTable>
+	</h:form>
+</h:body>
+</html>
