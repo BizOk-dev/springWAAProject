@@ -16,6 +16,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 		.antMatchers("/","/resources/static/**","/assets/**", "/home", "/index","/product","/resources/**", "/registration","/login","/api/**")
 		.permitAll()
 		.anyRequest()
+		//for mvc
 		/*.fullyAuthenticated()
 		.and().formLogin()
 		.permitAll()
